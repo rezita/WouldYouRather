@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Would You Rather</string>
+    <string name="next_question">Next Question</string>
+    <string name="add_new">Add new</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="reload_questions">Load original questions</string>
+    <string name="add_new_message">Write your question here</string>
+    <string name="edit_question_message">Change your question here</string>
+    <string name="delete_message">Are you sure you want to delete this question? \n After you delete it will be gone forever.</string>
+    <string name="option1">First part of the question:</string>
+    <string name="hint_for_option1">First part of the question</string>
+    <string name="option2">Second part of the question:</string>
+    <string name="hint_for_option2">Second part of the question</string>
+    <string name="hint_for_typing">Start typing...</string>
+    <string name="start_question">Would you rather...</string>
+    <string name="question_separator">or</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="locale_code">en</string>
+    <string name="json_filename" translatable="false">WouldYouRather_en.JSON</string>
+    <string name="no_question_message">Sorry, there are no questions!</string>
+
+
+</resources>

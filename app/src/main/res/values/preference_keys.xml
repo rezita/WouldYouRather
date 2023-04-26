@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="first_time_use" translatable="false">FirstTimeUse</string>
+    <string name="preload_file" translatable="false">question_preload.txt</string>
+</resources>
