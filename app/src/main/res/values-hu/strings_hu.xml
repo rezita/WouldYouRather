@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Melyiket választanád?</string>
     <string name="next_question">Következő</string>
-    <string name="add_new">Új...</string>
+    <string name="add_new">Új…</string>
     <string name="delete">Töröl</string>
     <string name="edit">Módosít</string>
     <string name="reload_questions">Eredeti kérdések betöltése</string>
@@ -13,12 +13,13 @@
     <string name="hint_for_option1">A kérdés első része</string>
     <string name="option2">A kérdés második része:</string>
     <string name="hint_for_option2">A kérdés második része</string>
-    <string name="hint_for_typing">Ide gépelhetsz...</string>
-    <string name="start_question">Melyiket választanád...</string>
+    <string name="hint_for_typing">Ide gépelhetsz…</string>
+    <string name="start_question">Melyiket választanád…</string>
     <string name="question_separator">vagy</string>
     <string name="ok">OK</string>
     <string name="cancel">Mégse</string>
     <string name="locale_code">hu</string>
     <string name="json_filename" translatable="false">WouldYouRather_hu.JSON</string>
     <string name="no_question_message">Nincsenek kérdések!</string>
+    <string name="start">Kezdjük a játékot!</string>
 </resources>

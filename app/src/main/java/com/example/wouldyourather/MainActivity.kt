@@ -2,14 +2,18 @@ package com.example.wouldyourather
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
 import com.example.wouldyourather.databinding.ActivityMainBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -28,28 +32,32 @@ class MainActivity : AppCompatActivity() {
             applicationContext
         )
 
-        init()
-        showQuestion()
+        binding.btnStartGame.setOnClickListener { init() }
     }
-
     override fun onPause() {
+        dismissDialogs(supportFragmentManager)
         saveQuestions()
         super.onPause()
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
+        val isNotInitState = (binding.btnStartGame.visibility == View.GONE)
         val isNotEmptyQuestions = (questions.size != 0)
-        menu?.findItem(R.id.menu_delete)?.setVisible(isNotEmptyQuestions)
-        menu?.findItem(R.id.menu_edit)?.setVisible(isNotEmptyQuestions)
+        menu?.findItem(R.id.menu_delete)?.isVisible = isNotEmptyQuestions
+        menu?.findItem(R.id.menu_edit)?.isVisible = isNotEmptyQuestions
+        menu?.findItem(R.id.menu_add_new)?.isVisible = isNotInitState
+        menu?.findItem(R.id.menu_backup)?.isVisible = isNotInitState
         return true
     }
 
 
     override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val isNotInitState = (binding.btnStartGame.visibility == View.GONE)
         val isNotEmptyQuestions = (questions.size != 0)
-        menu?.findItem(R.id.menu_delete)?.setVisible(isNotEmptyQuestions)
-        menu?.findItem(R.id.menu_edit)?.setVisible(isNotEmptyQuestions)
+        menu?.findItem(R.id.menu_delete)?.isVisible = isNotEmptyQuestions
+        menu?.findItem(R.id.menu_edit)?.isVisible = isNotEmptyQuestions
+        menu?.findItem(R.id.menu_add_new)?.isVisible = isNotInitState
+        menu?.findItem(R.id.menu_backup)?.isVisible = isNotInitState
         return true
     }
 
@@ -88,6 +96,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
+        loadQuestions()
+        setPLayArea()
+        showQuestion()
+    }
+
+    private fun loadQuestions(){
         //preloadQuestions()
         if (isFirstTimeUser()){
             //load questions from raw resource
@@ -106,6 +120,12 @@ class MainActivity : AppCompatActivity() {
                 preloadQuestions()
             }
         }
+    }
+
+    private fun setPLayArea(){
+        binding.btnStartGame.visibility = View.GONE
+        binding.noQuestionText.visibility = View.GONE
+        binding.layoutWholeQuestion.visibility = View.VISIBLE
         binding.btnNextQuestion.setOnClickListener { showQuestion() }
     }
 
@@ -175,9 +195,8 @@ class MainActivity : AppCompatActivity() {
         dialog.show(supportFragmentManager, "DialogEditQuestion")
     }
 
-    fun getCurrentQuestion(): Question{
-        return questions[index]
-    }
+    fun getCurrentQuestion(): Question? =
+        if (questions.size > index) {questions[index]} else {null}
 
     fun editQuestion(op1: String, op2: String){
         questions[index].amend(op1, op2)
@@ -188,5 +207,14 @@ class MainActivity : AppCompatActivity() {
         questions.clear()
         preloadQuestions()
         showQuestion()
+    }
+    private fun dismissDialogs(manager: FragmentManager){
+        val fragments = manager.fragments
+
+        for (fragment in fragments) {
+            if (fragment is DialogFragment) {
+                fragment.dismissAllowingStateLoss()
+            }
+        }
     }
 }
