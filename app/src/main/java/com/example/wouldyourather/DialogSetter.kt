@@ -3,11 +3,9 @@ package com.example.wouldyourather
 import android.text.Editable
 import android.text.InputFilter
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
-import kotlin.math.max
 
 abstract class DialogSetter(): DialogFragment() {
     private val maxOptionLength = 100
