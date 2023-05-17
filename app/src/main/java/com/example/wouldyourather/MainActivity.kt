@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -35,10 +36,15 @@ class MainActivity : AppCompatActivity() {
         binding.btnStartGame.setOnClickListener { init() }
     }
     override fun onPause() {
-        dismissDialogs(supportFragmentManager)
         saveQuestions()
         super.onPause()
     }
+
+    override fun onResume() {
+        super.onResume()
+        dismissDialogIfRestarted()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.option_menu, menu)
         val isNotInitState = (binding.btnStartGame.visibility == View.GONE)
@@ -121,7 +127,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
     private fun setPLayArea(){
         binding.btnStartGame.visibility = View.GONE
         binding.noQuestionText.visibility = View.GONE
@@ -215,6 +220,12 @@ class MainActivity : AppCompatActivity() {
             if (fragment is DialogFragment) {
                 fragment.dismissAllowingStateLoss()
             }
+        }
+    }
+
+    private fun dismissDialogIfRestarted(){
+        if(binding.btnStartGame.visibility == View.VISIBLE) {
+            dismissDialogs(supportFragmentManager)
         }
     }
 }
