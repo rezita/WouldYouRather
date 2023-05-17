@@ -37,7 +37,6 @@ abstract class DialogSetter(): DialogFragment() {
             maxLength = maxOptionLength
             source.filters = arrayOf(InputFilter.LengthFilter(maxOptionLength))
         }
-        val text = "$maxLength / ${maxLength - source.length()}"
         target.text = "$maxLength / ${maxLength - source.length()}"
     }
 

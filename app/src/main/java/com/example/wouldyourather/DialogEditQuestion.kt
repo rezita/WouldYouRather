@@ -3,9 +3,7 @@ package com.example.wouldyourather
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.text.Editable
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.DialogFragment
 import com.example.wouldyourather.databinding.DialogNewEditQuestionBinding
 
 class DialogEditQuestion: DialogSetter() {
