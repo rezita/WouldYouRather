@@ -12,12 +12,10 @@
     <string name="hint_for_option1">First part of the question</string>
     <string name="option2">Second part of the question:</string>
     <string name="hint_for_option2">Second part of the question</string>
-    <string name="hint_for_typing">Start typing…</string>
     <string name="start_question">Would you rather…</string>
     <string name="question_separator">or</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
-    <string name="locale_code">en</string>
     <string name="json_filename">WouldYouRather_en.JSON</string>
     <string name="no_question_message">Sorry, there are no questions!</string>
     <string name="start">Start Game</string>
